@@ -1,4 +1,4 @@
-package com.luteh.forecast.data
+package com.luteh.forecast.data.network
 
 import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterFactory
 import com.luteh.forecast.data.network.response.CurrentWeatherResponse
@@ -28,7 +28,7 @@ interface ApixuWeatherApiService {
     ): Deferred<CurrentWeatherResponse>
 
     companion object {
-        operator fun invoke(): ApixuWeatherApiService {
+        operator fun invoke(connectivityInterceptor: ConnectivityInterceptor): ApixuWeatherApiService {
 
             /**
              * Create [Interceptor] to insert [API_KEY] into url query
@@ -51,6 +51,7 @@ interface ApixuWeatherApiService {
 
             val okHttpClient = OkHttpClient.Builder()
                 .addInterceptor(requestInterceptor)
+                .addInterceptor(connectivityInterceptor)
                 .build()
 
             return Retrofit.Builder()
