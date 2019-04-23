@@ -29,6 +29,11 @@ interface ApixuWeatherApiService {
 
     companion object {
         operator fun invoke(): ApixuWeatherApiService {
+
+            /**
+             * Create [Interceptor] to insert [API_KEY] into url query
+             * This [Interceptor] will be implemented on [OkHttpClient]
+             */
             val requestInterceptor = Interceptor { chain: Interceptor.Chain ->
                 val url = chain.request()
                     .url()
