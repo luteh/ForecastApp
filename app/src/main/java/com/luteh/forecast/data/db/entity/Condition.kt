@@ -1,4 +1,4 @@
-package com.luteh.forecast.data.response
+package com.luteh.forecast.data.db.entity
 
 import com.google.gson.annotations.SerializedName
 

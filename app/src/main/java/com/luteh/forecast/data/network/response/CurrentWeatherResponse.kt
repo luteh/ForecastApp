@@ -1,6 +1,8 @@
-package com.luteh.forecast.data.response
+package com.luteh.forecast.data.network.response
 
 import com.google.gson.annotations.SerializedName
+import com.luteh.forecast.data.db.entity.CurrentWeatherEntry
+import com.luteh.forecast.data.db.entity.Location
 
 data class CurrentWeatherResponse(
     @SerializedName("current")
